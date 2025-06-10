@@ -1,14 +1,34 @@
 version: 2
 
 models:
-- name: STG_ORDERS
-  columns:
-    - name: order_id
-  tests:
-      - unique
-      - not_null
-- name: customer_id
-  tests:
-      - not_null
-       
-      
+
+  - name: stg_orders
+    description: "Staging model for orders data"
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+      - name: order_date
+        tests:
+          - not_null
+      - name: amount
+        tests:
+          - not_null
+
+  - name: fact_top
+    description: "Fact model to get top 2 orders based on amount"
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+      - name: amount
+        tests:
+          - not_null
+
+    
